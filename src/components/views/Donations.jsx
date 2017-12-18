@@ -307,6 +307,7 @@ class Donations extends Component {
                       <th className="td-transaction-status">Status</th>
                       <th className="td-tx-address">Address</th>
                       <th className="td-action" />
+                      <th className="td-graph" />
                     </tr>
                   </thead>
                   <tbody>
@@ -383,6 +384,10 @@ class Donations extends Component {
                             </button>
                           </div>
                                 }
+                        </td>
+
+                        <td className="td-graph">
+                          <Link to={`/donations/graph/${d._id}`}>Graph </Link>
                         </td>
                       </tr>))}
 

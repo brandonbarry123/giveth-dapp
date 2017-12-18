@@ -29,6 +29,7 @@ import ViewMilestone from './../components/views/ViewMilestone';
 import EditDAC from './../components/views/EditDAC';
 import ViewDAC from './../components/views/ViewDAC';
 import Donations from './../components/views/Donations';
+import DonationsGraph from './../components/views/DonationsGraph';
 import Delegations from './../components/views/Delegations';
 import MyDACs from './../components/views/MyDACs';
 import MyCampaigns from './../components/views/MyCampaigns';
@@ -124,7 +125,7 @@ class Application extends Component {
         if (token) return feathersClient.passport.verifyJWT(token);
         return null;
       })
-      .then(payload => { 
+      .then(payload => {
         return Application.getUserProfile(payload.userId)
       })
       .then((user) => {
@@ -294,7 +295,7 @@ class Application extends Component {
                 path="/campaigns/:id/milestones/propose"
                 component={props =>
                   <EditMilestone isNew isProposed currentUser={currentUser} wallet={wallet} {...props} />}
-              />              
+              />
               <Route
                 exact
                 path="/campaigns/:id/milestones/:milestoneId"
@@ -319,6 +320,13 @@ class Application extends Component {
                 path="/donations"
                 component={props =>
                   <Donations currentUser={currentUser} wallet={wallet} {...props} />}
+              />
+
+              <Route
+                exact
+                path="/donations/graph/:id"
+                component={props =>
+                  <DonationsGraph currentUser={currentUser} wallet={wallet} {...props} />}
               />
               <Route
                 exact
